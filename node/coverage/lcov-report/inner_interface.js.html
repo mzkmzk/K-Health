@@ -1,0 +1,317 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for inner_interface.js</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="prettify.css" />
+    <link rel="stylesheet" href="base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="index.html">All files</a> inner_interface.js
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">67.86% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>19/28</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">66.67% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>4/6</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">62.5% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>10/16</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">69.23% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>18/26</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line medium'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span></td><td class="text"><pre class="prettyprint lang-js">let //rp = require('request-promise'),
+    utils = require('./utils'),
+    { rp } = utils,
+    CONSTANT = require('./CONSTANT'),
+    _ = require('underscore'),
+    moment = require('moment'),
+    inner_interface = {
+        get_url_tasks: () =&gt; {
+            return rp(utils.get_url(CONSTANT.INNER_URL.QUERY_URL, {
+                where: {
+                    last_reptile_visit_start_at: { // 被领超过一天 或者没被领的情况
+                        condition: '&lt;=',
+                        value: moment().add(1,'days').format('YYYY-MM-DD HH:mm:ss') //一天内没处理
+                    },
+                    last_reptile_visit_end_at: { //任务未完成
+                        condition: '&lt;&gt;',
+                        value: ''
+                    },
+                    belong: {
+                        condition: '=',
+                        value: CONSTANT.BELONG
+                    }
+                }
+            }))
+            .then(<span class="fstat-no" title="function not covered" >re</span>sult =&gt; {
+               // console.log('get_url_tasks success ', JSON.stringify(JSON.parse(result),null, 2))
+<span class="cstat-no" title="statement not covered" >                return new Promise( <span class="fstat-no" title="function not covered" >(r</span>esolve, reject) =&gt; {</span>
+                    //console.log('result ',result)
+<span class="cstat-no" title="statement not covered" >                    if (result.total &gt; 0) <span class="cstat-no" title="statement not covered" >resolve(result)</span></span>
+                    else <span class="cstat-no" title="statement not covered" >reject(result)</span>
+                })
+            }, <span class="fstat-no" title="function not covered" >(.</span>..args) =&gt; {
+               // console.log('get_url_tasks error ', args)
+            })
+        },
+        query_static: <span class="fstat-no" title="function not covered" >ur</span>l_object =&gt; {
+<span class="cstat-no" title="statement not covered" >            return rp(utils.get_url(CONSTANT.INNER_URL.QUERY_STATIC, {</span>
+                creator_url_id: url_object.id
+            }))
+        },
+        create_static: <span class="fstat-no" title="function not covered" >st</span>atic_object =&gt; {
+<span class="cstat-no" title="statement not covered" >            return rp(utils.get_url(CONSTANT.INNER_URL.INSERT_STATIC, { </span>
+                creator_url_id: static_object.creator_url_id ,
+                local_path: static_object.local_path
+            }))
+        },
+        create_url_task: (reptile_array) =&gt; {
+            return reptile_array.reduce((promise, current) =&gt; {
+                return promise.then( () =&gt; {
+                    return rp(utils.get_url(CONSTANT.INNER_URL.QUERY_URL, { url: current.url }) )
+                                .then( result =&gt; {
+                                    return new Promise( (resolve, reject) =&gt; {
+                                        //console.log(result)
+&nbsp;
+                                        if ( result &amp;&amp; result.total == 1 ) resolve()
+                                        else reject(current.url)
+                                    })
+                                })
+                                .then(() =&gt; Promise.resolve(), url =&gt; {
+                                    return rp(utils.get_url(CONSTANT.INNER_URL.INSERT_URL, current))
+                                })
+                })
+            }, Promise.resolve())
+        },
+        update_url: <span class="fstat-no" title="function not covered" >ur</span>l_object =&gt; {
+<span class="cstat-no" title="statement not covered" >            url_object.last_reptile_visit_end_at = utils.get_date_time()</span>
+<span class="cstat-no" title="statement not covered" >            delete url_object.updated_at</span>
+<span class="cstat-no" title="statement not covered" >            return rp(utils.get_url(CONSTANT.INNER_URL.UPDATE_URL, url_object))</span>
+        },
+        init_reptile_url: (reptile_url_array) =&gt; {
+            return inner_interface.create_url_task(
+                _.map(reptile_url_array, element =&gt; {
+                    
+                    return {
+                        url: element,
+                        referer: 'INIT',
+                        belong: CONSTANT.BELONG
+                    }
+                })
+            )
+        }
+    }
+&nbsp;
+&nbsp;
+module.exports = inner_interface</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Wed Aug 23 2017 00:04:15 GMT+0800 (CST)
+</div>
+</div>
+<script src="prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="sorter.js"></script>
+</body>
+</html>
