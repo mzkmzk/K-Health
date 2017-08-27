@@ -8,6 +8,8 @@ let http = require('http'),
     Agent = require('socks5-http-client/lib/Agent'),
     request = require('request'),
     CONSTANT = require('./CONSTANT'),
+    moment = require('moment')
+    fse = require('fs-extra'),
     download = {
         by_url: (url_object) => {
             //console.log(_url)
@@ -15,17 +17,10 @@ let http = require('http'),
                 let url = url_object.url,
                     http_client = url.slice(0, 5) === 'https' ? https : http,
                     file_name = new URL(url).pathname.replace(/\//g, '-'),
-                    local_file, writer,watcher, last_watch_length
+                    local_file,target_file, type, file_type, writer,watcher, last_watch_length
 
-                /*if (type === 'IMAGE'){
-                    local_file = path.join(__dirname, '../../','./download','./images/', file_name +'.png')
-                    
-                }else if (type === 'VIDEO'){
-                    local_file = path.join(__dirname, '../../','./download','./videos/', file_name + '.mp4')
-                    
-                }*/
-                 local_file =  path.join(__dirname, CONSTANT.STATIC_PATH, file_name +'.mp4' )
-                //console.log(local_file)
+                 local_file =  path.join(__dirname, CONSTANT.STATIC_PATH, file_name  )
+            
                 writer = fs.createWriteStream(local_file)
                 /*watcher = fs.watch(local_file, { encoding: 'buffer' }, (eventType, filename) => {
                   if (filename && last_watch_length !== filename.length) {
@@ -34,15 +29,7 @@ let http = require('http'),
                     // Prints: <Buffer ...>
                   }
                 });*/
-                writer.on('finish', function() {
-                    console.log('download finish ' + url + ' to ' + local_file)
-                    //watcher.close()
-
-                    resolve({
-                        creator_url_id: url_object.id,
-                        local_path: local_file
-                    })
-                })
+                
                 console.log('download start ' + url + ' to ' + local_file)
                 let result = request({
                             url,
@@ -53,9 +40,10 @@ let http = require('http'),
                             }
                         })
                 .on('response', function(response) {
-                    let match = response.headers['content-type'].match(/([^/]*)\/([^/]*)/),
-                        type = match[1] || '',
-                        file_type = match|| ''
+                    let match = response.headers['content-type'].match(/([^/]*)\/([^/]*)/)
+
+                    type = match[1] || '',
+                    file_type = match[2]|| ''
                     console.log(response.statusCode) // 200 
                     console.log(response.headers['content-type']) // 'image/png' 
                     console.log( parseInt(response.headers['content-length'] / 1024 / 1024) +'M' ) // 'image/png' 
@@ -73,9 +61,41 @@ let http = require('http'),
                     console.log(err)
                   })
                 .pipe(writer)
-            })
-            
-        }
+                
+                writer.on('drain', src => {
+                     console.error( moment().format('YYYY-MM-DD HH:mm:ss') +'something is piping into the writer');
+                    //   console.log(arguments) 
+                })
+                
+                writer.on('finish', function() {
+                    console.log('download finish ' + url + ' to ' + local_file)
+                    target_file = path.join(__dirname, CONSTANT.STATIC_PATH,type, file_name + '.' + file_type )
+                    //watcher.close()
+                    download.move_file(local_file,  target_file )
+                    resolve({
+                        creator_url_id: url_object.id,
+                        local_path:  target_file
+                    })
+                })
+                writer.on('error', function() {
+                    console.log('download error ' + url + ' to ' + local_file)
+                    
+                    resolve({
+                        creator_url_id: url_object.id,
+                        local_path: 'error'
+                    })
+                })
+                console.log(result.length)
+            })   
+        },
+        move_file: (source_file, target_file) => {
+            //let target_dirname = path.dirname(target_file),
+                //source_file_stat = fs.fstatSync(source_file),
+                //target_file_Stat = fs.fstatSync(target_file)
+            console.log( `${source_file} move ${target_file}` )
+            console.log(fse.moveSync(source_file, target_file))
+        },
+        start_check: () => {}
 }
 
 module.exports = download

@@ -1,5 +1,4 @@
-let Reptile = require('./Reptile'),
-    CONSTANT = require('./CONSTANT'),
+let CONSTANT = require('./CONSTANT'),
     inner_interface = require('./inner_interface'),
     handle_url = require('./handle_url')
 
@@ -7,7 +6,9 @@ let Reptile = require('./Reptile'),
     url_array: CONSTANT.REPTILE_URL
 })*/
 
-inner_interface
+
+var go_health = function(){
+    inner_interface
     .init_reptile_url(CONSTANT.REPTILE_URL)
     .then( result => {
         //console.log('then')
@@ -27,5 +28,7 @@ inner_interface
     .catch(err => {
         console.log(err)
     })
+}
 
+go_health()
 

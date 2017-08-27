@@ -13,8 +13,8 @@ let //rp = require('request-promise'),
                         value: moment().add(1,'days').format('YYYY-MM-DD HH:mm:ss') //一天内没处理
                     },
                     last_reptile_visit_end_at: { //任务未完成
-                        condition: '<>',
-                        value: ''
+                        condition: '=',
+                        value: '0000-00-00 00:00:00'
                     },
                     belong: {
                         condition: '=',

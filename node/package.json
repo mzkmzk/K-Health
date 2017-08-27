@@ -3,11 +3,16 @@
   "version": "0.0.1",
   "description": "",
   "main": "src/index.js",
-  "scripts": {},
+  "scripts": {
+    "test": "jest",
+    "test:ci": "jest -ci",
+    "all": "node ./src/index.js > ./__logs__/node.log & tail -F  ./__logs__/node.log "
+  },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "cheerio": "1.0.0-rc.2",
+    "fs-extra": "4.0.1",
     "json-comments": "0.2.1",
     "moment": "2.18.1",
     "queue": "4.4.0",
@@ -16,9 +21,6 @@
     "socks5-http-client": "1.0.2",
     "superagent": "3.5.2",
     "underscore": "1.8.3"
-  },
-  "scripts": {
-      "all": "node ./src/index.js > ./__logs__/node.log & tail -F  ./__logs__/node.log "
   },
   "devDependencies": {
     "jest": "20.0.4"

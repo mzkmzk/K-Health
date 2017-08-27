@@ -1,7 +1,9 @@
 module.exports = {
     BASE_URL: 'http://www.sex.com',
     REPTILE_URL: [ //必须是列表
-        'http://www.sex.com/videos/teen/'
+        'http://www.sex.com/videos/teen/',
+        'http://www.sex.com/videos/teen/?page=2',
+        'http://www.sex.com/videos/teen/?page=3'
     ],
     BELONG: 'HEALTH',
     INNER_URL: {
@@ -16,7 +18,9 @@ module.exports = {
         'DETAIL': 'DETAIL',
         '404': '404',
         'STATIC': 'STATIC',
+        'unknown': 'UNKNOWN'
     },
-    STATIC_PATH: '../../static'
+    STATIC_PATH: '../../static',
+    STATIC_TMP: '../../static/tmp'
     
 }

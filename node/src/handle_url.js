@@ -77,6 +77,8 @@ let handle_url = {
                         })
                 }else {
                     console.log('handle url is not handle')
+                    handle_url.handle_health_unknown(url_object)
+                        .then(function(){})
                     cb()
                 }
                 //cb()
@@ -102,10 +104,13 @@ let handle_url = {
                 return inner_interface.update_url(url_object)
             })
     },
+    handle_health_unknown: (url_object) => {
+        url_object.type = CONSTANT.HEALTH_URL_TYPE['unknown']
+        return inner_interface.update_url(url_object)
+    },
     handle_health_404: url_object => {
-        return inner_interface.update_url({
-            type: CONSTANT.HEALTH_URL_TYPE['404']
-        })
+        url_object.type = CONSTANT.HEALTH_URL_TYPE['404']
+        return inner_interface.update_url(url_object)
     },
     handle_health_detail: (url_object, $) => {
         let health_content = {
@@ -113,7 +118,8 @@ let handle_url = {
         }
         console.info(url_object.url +' 捕抓到: ' + utils.get_video_src($, url_object.url) + '视频')
         if ( utils.get_video_src($, url_object.url) ) {
-
+                
+                inner_interface.update_url(url_object)
                 return inner_interface.create_url_task([{
                     url:  CONSTANT.BASE_URL +  utils.get_video_src($, url_object.url),//$(element).attr('href'),
                     referer: url_object.url,
@@ -132,7 +138,7 @@ let handle_url = {
         let current_url = new URL(url_object.url),
             page = current_url.searchParams.get('page'),
             detail_page_array = $('.image_wrapper'),
-            next_page = page ?  page + 1 : 2,
+            next_page = page ?  parseInt(page)  + 1 : 2,
             next_page_url = current_url.searchParams.set('page',next_page),
             detail_page_array_url = []
         
@@ -155,10 +161,11 @@ let handle_url = {
             })
         }, Promise.resolve())
         .then(() => {
+            console.log(`捕抓到下一页列表 ${next_page_url} ${current_url}`)
             //开始下一页
             //this.start(next_page_url)
             inner_interface.create_url_task([{
-                url: next_page_url,
+                url: current_url,
                 referer: url_object.url,
                 type: CONSTANT.HEALTH_URL_TYPE.LIST,
                 belong: CONSTANT.BELONG
